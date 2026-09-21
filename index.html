@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<title>∞ motivos pra te amar</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E💗%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+
+<style>
+/* =========================================================
+   ∞ motivos pra te amar  ·  pixel art rosa
+   ========================================================= */
+
+:root {
+  --fundo: #ffd3e5;
+  --xadrez: #ffc7de;
+  --vinho: #7a1f4b;
+  --rosa: #ff5f9e;
+  --rosa-forte: #d6337a;
+  --rosa-claro: #ffa3c7;
+  --rosa-palido: #ffe3ef;
+  --creme: #fff8fb;
+  --sombra: rgba(122, 31, 75, .32);
+  --fonte-titulo: 'Press Start 2P', 'Courier New', monospace;
+  --fonte-texto: 'VT323', 'Courier New', monospace;
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; margin: 0; }
+
+body {
+  min-height: 100vh;
+  min-height: 100svh;
+  background-color: var(--fundo);
+  background-image: conic-gradient(var(--xadrez) 25%, transparent 0 50%, var(--xadrez) 0 75%, transparent 0);
+  background-size: 48px 48px;
+  color: var(--vinho);
+  font-family: var(--fonte-texto);
+  overflow-x: hidden;
+  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+}
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap;
+}
+
+[data-sprite] svg { display: block; width: 100%; height: auto; }
+
+/* ---------- Mural (layout geral) ---------- */
+
+.mural {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 26px 12px;
+  padding: 30px 14px 56px;
+  max-width: 1500px;
+  margin: 0 auto;
+}
+
+.deco { position: absolute; z-index: 0; pointer-events: none; }
+.deco.brilho { animation: brilha 2.4s steps(1, end) infinite; }
+@keyframes brilha { 0%, 100% { opacity: 1; } 50% { opacity: .3; } }
+
+/* ---------- Palco com o pote ---------- */
+
+.stage {
+  order: 2;
+  flex: 0 0 100%;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 10px 0 6px;
+}
+
+.pote {
+  all: unset;
+  display: block;
+  cursor: pointer;
+  width: min(80vw, 360px);
+  transition: transform .2s steps(2, end);
+  -webkit-tap-highlight-color: transparent;
+}
+.pote svg { display: block; width: 100%; height: auto; }
+.pote:hover { transform: translateY(-8px); }
+.pote:focus-visible { outline: 4px dashed var(--vinho); outline-offset: 10px; }
+.pote.chacoalha svg { animation: chacoalha .5s steps(1, end); }
+
+@keyframes chacoalha {
+  0%   { transform: translateX(0); }
+  14%  { transform: translateX(-9px); }
+  28%  { transform: translateX(9px); }
+  42%  { transform: translateX(-7px); }
+  56%  { transform: translateX(7px); }
+  70%  { transform: translateX(-4px); }
+  84%  { transform: translateX(4px); }
+  100% { transform: translateX(0); }
+}
+
+.dica {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--fonte-titulo);
+  font-size: 12px;
+  line-height: 1.8;
+  text-align: center;
+}
+
+/* ---------- Polaroides ---------- */
+
+.polaroid {
+  position: relative;
+  z-index: 1;
+  order: 3;
+  width: clamp(128px, 42vw, 190px);
+  margin: 4px;
+  padding: 10px 10px 0;
+  background: var(--creme);
+  box-shadow:
+    0 -4px 0 0 var(--vinho),
+    0 4px 0 0 var(--vinho),
+    -4px 0 0 0 var(--vinho),
+    4px 0 0 0 var(--vinho);
+  transform: rotate(var(--r, 0deg));
+  filter: drop-shadow(6px 8px 0 var(--sombra));
+}
+.polaroid.p1, .polaroid.p2 { order: 1; }
+
+/* fita adesiva */
+.polaroid::before,
+.papel::before {
+  content: "";
+  position: absolute;
+  top: -18px;
+  left: 50%;
+  width: 72px;
+  height: 24px;
+  background: var(--fita, #ff8fbb);
+  transform: translateX(-50%) rotate(var(--rf, -3deg));
+  box-shadow:
+    0 -3px 0 0 rgba(122, 31, 75, .55),
+    0 3px 0 0 rgba(122, 31, 75, .55),
+    -3px 0 0 0 rgba(122, 31, 75, .55),
+    3px 0 0 0 rgba(122, 31, 75, .55);
+  z-index: 2;
+}
+
+.foto {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  border: 4px solid var(--vinho);
+  overflow: hidden;
+  background-color: var(--rosa-claro);
+  background-image: conic-gradient(var(--rosa-palido) 25%, transparent 0 50%, var(--rosa-palido) 0 75%, transparent 0);
+  background-size: 16px 16px;
+}
+.foto img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+}
+.foto img[hidden] { display: none; }
+.foto.tem .ph { display: none; }
+
+.ph {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 8px;
+  font-size: 22px;
+  line-height: 1;
+}
+.ph .sp { width: 44px; }
+
+.polaroid figcaption {
+  height: 48px;
+  display: grid;
+  place-items: center;
+  padding-top: 4px;
+  font-size: 26px;
+  line-height: 1;
+  text-align: center;
+}
+
+/* ---------- Papel com o motivo ---------- */
+
+.overlay {
+  position: fixed; inset: 0; z-index: 50;
+  display: grid; place-items: center;
+  padding: 28px 18px;
+  overflow: auto;
+  background: conic-gradient(rgba(60, 0, 35, .58) 25%, rgba(60, 0, 35, .44) 0 50%, rgba(60, 0, 35, .58) 0 75%, rgba(60, 0, 35, .44) 0) 0 0 / 8px 8px;
+}
+.overlay[hidden] { display: none; }
+
+.papel {
+  position: relative;
+  width: min(92vw, 520px);
+  margin: auto;
+  padding: 42px 26px 26px;
+  text-align: center;
+  background: var(--creme);
+  box-shadow:
+    0 -4px 0 0 var(--vinho),
+    0 4px 0 0 var(--vinho),
+    -4px 0 0 0 var(--vinho),
+    4px 0 0 0 var(--vinho);
+  filter: drop-shadow(0 10px 0 rgba(60, 0, 35, .45));
+  --fita: #ff8fbb;
+}
+.papel:focus { outline: none; }
+.papel.anima { animation: sobe .45s steps(6, end) both; }
+
+@keyframes sobe {
+  0%   { transform: translateY(170px) scale(.3); opacity: 0; }
+  100% { transform: none; opacity: 1; }
+}
+
+.papel .topo { width: 54px; margin: 0 auto; }
+
+.papel .numero {
+  margin-top: 16px;
+  font-family: var(--fonte-titulo);
+  font-size: 11px;
+  line-height: 1.4;
+  color: var(--rosa-forte);
+}
+
+.motivo {
+  --fs: clamp(30px, 7vw, 42px);
+  --lh: calc(var(--fs) * 1.25);
+  margin: 18px 0 26px;
+  padding: 0 6px;
+  font-size: var(--fs);
+  line-height: var(--lh);
+  min-height: calc(var(--lh) * 3);
+  text-wrap: balance;
+  background-image: linear-gradient(to bottom, transparent calc(100% - 3px), var(--rosa-claro) 0);
+  background-size: 100% var(--lh);
+}
+
+.acoes { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+
+.btn {
+  all: unset;
+  display: inline-block;
+  box-sizing: border-box;
+  min-height: 44px;
+  margin: 4px;
+  padding: 14px 18px;
+  cursor: pointer;
+  font-family: var(--fonte-titulo);
+  font-size: 11px;
+  line-height: 1.4;
+  color: #fff;
+  background: var(--rosa-forte);
+  box-shadow:
+    0 -4px 0 0 var(--vinho),
+    0 4px 0 0 var(--vinho),
+    -4px 0 0 0 var(--vinho),
+    4px 0 0 0 var(--vinho),
+    inset 0 -4px 0 0 rgba(60, 0, 35, .3);
+}
+.btn:hover { background: #e8488c; }
+.btn:active { transform: translateY(4px); }
+.btn:focus-visible { outline: 3px dashed var(--vinho); outline-offset: 8px; }
+.btn.claro { color: var(--vinho); background: var(--rosa-palido); }
+.btn.claro:hover { background: #fff; }
+
+/* ---------- Coraçõezinhos que voam do pote ---------- */
+
+.voa {
+  position: fixed; z-index: 60; pointer-events: none;
+  animation: voa 1s steps(9, end) both;
+}
+.voa svg { display: block; width: 100%; height: auto; }
+@keyframes voa {
+  0%   { transform: translate(0, 0); opacity: 1; }
+  100% { transform: translate(var(--dx), var(--dy)); opacity: 0; }
+}
+
+/* ---------- Telas maiores: polaroides espalhadas ao redor do pote ---------- */
+
+@media (min-width: 860px) {
+  .mural { display: block; min-height: 100vh; min-height: 100svh; padding: 0; }
+  .stage { min-height: 100vh; min-height: 100svh; justify-content: center; padding: 32px 0; }
+
+  .polaroid { position: absolute; width: clamp(150px, 14vw, 210px); margin: 0; }
+  .p1 { top: 5%;    left: 6%;   --r: -6deg; --fita: #ff8fbb; --rf: -4deg; }
+  .p2 { top: 8%;    right: 7%;  --r: 5deg;  --fita: #ffc2da; --rf: 3deg; }
+  .p3 { top: 36%;   left: 3%;   --r: 4deg;  --fita: #ffc2da; --rf: 4deg; }
+  .p4 { top: 42%;   right: 3%;  --r: -4deg; --fita: #ff8fbb; --rf: -3deg; }
+  .p5 { bottom: 4%; left: 11%;  --r: -3deg; --fita: #ff8fbb; --rf: 3deg; }
+  .p6 { bottom: 5%; right: 12%; --r: 6deg;  --fita: #ffc2da; --rf: -4deg; }
+}
+
+@media (max-width: 859px) {
+  .p1 { --r: -5deg; --fita: #ff8fbb; }
+  .p2 { --r: 4deg;  --fita: #ffc2da; }
+  .p3 { --r: 3deg;  --fita: #ffc2da; }
+  .p4 { --r: -4deg; --fita: #ff8fbb; }
+  .p5 { --r: -3deg; --fita: #ff8fbb; }
+  .p6 { --r: 5deg;  --fita: #ffc2da; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+</style>
+</head>
+
+<body>
+
+<main class="mural">
+  <h1 class="sr-only">∞ motivos pra te amar</h1>
+
+  <!-- ================= Decoração (corações e brilhos) ================= -->
+  <span class="deco"         data-sprite="heart" style="top:9%;  left:30%; width:40px"></span>
+  <span class="deco brilho"  data-sprite="spark" style="top:20%; left:76%; width:42px"></span>
+  <span class="deco"         data-sprite="heart" style="top:30%; left:70%; width:30px"></span>
+  <span class="deco brilho"  data-sprite="spark" style="top:62%; left:24%; width:36px; animation-delay:.8s"></span>
+  <span class="deco"         data-sprite="heart" style="top:78%; left:66%; width:44px"></span>
+  <span class="deco brilho"  data-sprite="spark" style="top:88%; left:34%; width:30px; animation-delay:1.4s"></span>
+  <span class="deco"         data-sprite="heart" style="top:52%; left:90%; width:28px"></span>
+  <span class="deco brilho"  data-sprite="spark" style="top:4%;  left:62%; width:30px; animation-delay:.4s"></span>
+
+  <!-- ================= O POTE ================= -->
+  <section class="stage">
+    <button class="pote" id="pote" type="button" aria-label="Tirar um motivo do pote"></button>
+    <p class="dica">
+      <span data-sprite="heart" style="width:27px"></span>
+      clique no pote
+      <span data-sprite="heart" style="width:27px"></span>
+    </p>
+  </section>
+
+  <!-- ================= POLAROIDES =================
+       Coloque suas fotos numa pasta chamada "fotos", ao lado deste arquivo,
+       com os nomes: foto1.jpg, foto2.jpg ... foto6.jpg (também aceita png/webp).
+       Elas entram sozinhas nas molduras. Para mudar a legenda, edite o texto
+       dentro de <figcaption>.
+  -->
+  <figure class="polaroid p1">
+    <div class="foto"><span class="ph"><span class="sp" data-sprite="heart"></span>sua foto</span><img alt="Foto 1" hidden></div>
+    <figcaption>legenda aqui</figcaption>
+  </figure>
+
+  <figure class="polaroid p2">
+    <div class="foto"><span class="ph"><span class="sp" data-sprite="heart"></span>sua foto</span><img alt="Foto 2" hidden></div>
+    <figcaption>legenda aqui</figcaption>
+  </figure>
+
+  <figure class="polaroid p3">
+    <div class="foto"><span class="ph"><span class="sp" data-sprite="heart"></span>sua foto</span><img alt="Foto 3" hidden></div>
+    <figcaption>legenda aqui</figcaption>
+  </figure>
+
+  <figure class="polaroid p4">
+    <div class="foto"><span class="ph"><span class="sp" data-sprite="heart"></span>sua foto</span><img alt="Foto 4" hidden></div>
+    <figcaption>legenda aqui</figcaption>
+  </figure>
+
+  <figure class="polaroid p5">
+    <div class="foto"><span class="ph"><span class="sp" data-sprite="heart"></span>sua foto</span><img alt="Foto 5" hidden></div>
+    <figcaption>legenda aqui</figcaption>
+  </figure>
+
+  <figure class="polaroid p6">
+    <div class="foto"><span class="ph"><span class="sp" data-sprite="heart"></span>sua foto</span><img alt="Foto 6" hidden></div>
+    <figcaption>legenda aqui</figcaption>
+  </figure>
+</main>
+
+<!-- ================= PAPELZINHO COM O MOTIVO ================= -->
+<div class="overlay" id="overlay" hidden>
+  <div class="papel" id="papel" role="dialog" aria-modal="true" aria-labelledby="motivo" tabindex="-1">
+    <div class="topo" data-sprite="heart"></div>
+    <p class="numero" id="numero"></p>
+    <p class="motivo" id="motivo"></p>
+    <div class="acoes">
+      <button class="btn" id="outro" type="button">tirar outro</button>
+      <button class="btn claro" id="fechar" type="button">guardar</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(() => {
+  /* =========================================================
+     ✏️  OS MOTIVOS — é só adicionar novas linhas aqui
+     ========================================================= */
+  const MOTIVOS = [
+    "seu amor por Jesus",
+    "o brilho do Espírito Santo em você",
+    "seus olhos",
+    "seu cabelo",
+    "o brilho dos seus olhos",
+    "a forma como você demonstra amor",
+  ];
+
+  /* Mais motivos prontos (saem depois dos seus). Apague os que não combinarem. */
+  const EXTRAS = [
+    "seu sorriso",
+    "sua risada",
+    "sua voz",
+    "seu abraço",
+    "seu coração",
+    "sua fé",
+    "sua paciência comigo",
+    "suas orações",
+    "sua delicadeza",
+    "sua bondade",
+    "sua doçura",
+    "sua alegria",
+    "sua companhia",
+    "sua sinceridade",
+    "sua generosidade",
+    "sua força nos dias difíceis",
+    "seu jeito único de ser",
+    "seu olhar quando você está feliz",
+    "o jeito como você fala de Deus",
+    "o jeito como você me escuta",
+    "o jeito como você cuida de quem ama",
+    "o jeito como você ri das coisas simples",
+    "o jeito como você vê o lado bom das coisas",
+    "o carinho que você tem com as pessoas",
+    "o cuidado que você tem comigo",
+    "o propósito que Deus colocou na sua vida",
+    "como você ora por mim",
+    "como você me faz rir",
+    "como você me faz sentir em casa",
+    "como você me faz sentir especial",
+    "como você me faz querer ser melhor",
+    "como o meu dia fica melhor com você",
+    "a sua mão na minha",
+    "cada detalhe seu",
+    "você existir",
+    "só por você ser você",
+    "porque Deus uniu os nossos propósitos",
+  ];
+
+  /* Depois que tudo acima aparecer, o pote monta motivos novos combinando estas peças */
+  const SUBST_M = ["sorriso", "abraço", "olhar", "carinho", "cuidado", "coração", "jeito de ser", "jeito de rir"];
+  const SUBST_F = ["voz", "risada", "fé", "paciência", "delicadeza", "bondade", "doçura", "presença", "alegria", "força"];
+  const CLAUSULAS = [
+    "que ilumina tudo ao redor",
+    "que faz o meu dia melhor",
+    "que me faz sentir em casa",
+    "que eu nunca quero esquecer",
+    "que me faz agradecer a Deus por você",
+    "que me acalma",
+    "que só você tem",
+  ];
+  const ACOES = [
+    "ama as pessoas", "ora por quem você ama", "cuida de quem está perto",
+    "sorri sem perceber", "fala de Jesus", "ri das coisas simples",
+    "escuta com o coração", "se importa com todo mundo", "abraça", "acredita nas pessoas",
+  ];
+  const FECHOS = [
+    "e isso me encanta",
+    "e eu agradeço a Deus por isso",
+    "e isso me faz te amar ainda mais",
+    "e isso aquece o meu coração",
+    "e eu nunca vou me cansar de ver",
+  ];
+
+  /* ---------- Motorzinho de pixel art (texto -> SVG) ---------- */
+  const PAL = {
+    o: '#7a1f4b',            // contorno vinho
+    k: '#c83e7d',            // contorno de papel
+    r: '#ff4d8d', R: '#d6337a', h: '#ffffff',
+    g: '#ffe6f0', G: '#ff7fb0@.4', H: '#ffffff@.85',
+    l: '#ff5f9e', L: '#d6337a', s: '#ffa3c7',
+    b: '#ff8fbf', B: '#e2568f',
+    p: '#fffafc', q: '#ffc9dd', Q: '#ff9ec2', m: '#ff7fae',
+    P: '#fff6fa', S: '#7a1f4b@.22',
+  };
+
+  const blank = (w, h) => Array.from({ length: h }, () => Array(w).fill('.'));
+  const rect = (g, x, y, w, h, c) => {
+    for (let j = y; j < y + h; j++) for (let i = x; i < x + w; i++) if (g[j] && g[j][i] !== undefined) g[j][i] = c;
+  };
+  const sobre = (base, topo) => {
+    topo.forEach((row, y) => row.forEach((c, x) => { if (c !== '.') base[y][x] = c; }));
+  };
+  const contorno = (g, c = 'o') => {
+    const H = g.length, W = g[0].length, out = g.map(r => r.slice());
+    for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) {
+      if (g[y][x] !== '.') continue;
+      if ((y > 0 && g[y-1][x] !== '.') || (y < H-1 && g[y+1][x] !== '.') ||
+          (x > 0 && g[y][x-1] !== '.') || (x < W-1 && g[y][x+1] !== '.')) out[y][x] = c;
+    }
+    return out;
+  };
+
+  const toSVG = (g, extra = '') => {
+    const H = g.length, W = g[0].length;
+    let rects = '';
+    for (let y = 0; y < H; y++) {
+      let x = 0;
+      while (x < W) {
+        const c = g[y][x];
+        if (c === '.') { x++; continue; }
+        let x2 = x;
+        while (x2 + 1 < W && g[y][x2 + 1] === c) x2++;
+        const [cor, op] = (PAL[c] || '#f0f').split('@');
+        rects += `<rect x="${x}" y="${y}" width="${x2 - x + 1}" height="1" fill="${cor}"${op ? ` fill-opacity="${op}"` : ''}/>`;
+        x = x2 + 1;
+      }
+    }
+    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" shape-rendering="crispEdges" aria-hidden="true" focusable="false">${rects}${extra}</svg>`;
+  };
+
+  const sprite = (rows, ol) => {
+    const g = rows.map(r => r.split(''));
+    const W = g[0].length;
+    const p = [Array(W + 2).fill('.'), ...g.map(r => ['.', ...r, '.']), Array(W + 2).fill('.')];
+    return toSVG(contorno(p, ol));
+  };
+
+  const HEART = [
+    ".rr.rr.",
+    "rhrrrrr",
+    "rrrrrrR",
+    ".rrrrR.",
+    "..rrR..",
+    "...r...",
+  ];
+  const SPARK = [
+    "...h...",
+    "...h...",
+    "..hhh..",
+    "hhhhhhh",
+    "..hhh..",
+    "...h...",
+    "...h...",
+  ];
+  const SPR = { heart: sprite(HEART, 'o'), spark: sprite(SPARK, 'k') };
+
+  /* ---------- O pote ---------- */
+  const montaPote = () => {
+    const W = 37, H = 46;
+    const g = blank(W, H);
+
+    // sombra no chão
+    rect(g, 7, 43, 23, 1, 'S'); rect(g, 4, 44, 29, 1, 'S'); rect(g, 7, 45, 23, 1, 'S');
+
+    // vidro
+    const vidro = blank(W, H);
+    rect(vidro, 9, 7, 19, 3, 'g');
+    rect(vidro, 6, 10, 25, 1, 'g');
+    rect(vidro, 4, 11, 29, 1, 'g');
+    rect(vidro, 3, 12, 31, 28, 'g');
+    rect(vidro, 4, 40, 29, 1, 'g');
+    rect(vidro, 5, 41, 27, 1, 'g');
+    sobre(g, contorno(vidro));
+
+    // papeizinhos dentro do pote (posições sempre iguais)
+    let seed = 7;
+    const rnd = () => {
+      seed |= 0; seed = (seed + 0x6D2B79F5) | 0;
+      let t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
+      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+    const cores = ['p', 'p', 'q', 'q', 'Q', 'm', 'p', 'q'];
+    const papeis = [];
+    for (let n = 0; n < 62; n++) {
+      const w = 6 + Math.floor(rnd() * 4);
+      const h = 4 + Math.floor(rnd() * 2);
+      const x = 5 + Math.floor(rnd() * (28 - w));
+      const y = 11 + Math.floor(rnd() * (32 - h));
+      papeis.push({ x, y, w, h, c: cores[Math.floor(rnd() * cores.length)] });
+    }
+    papeis.sort((a, b) => a.y - b.y).forEach(({ x, y, w, h, c }) => {
+      rect(g, x, y, w, h, 'k');
+      rect(g, x + 1, y + 1, w - 2, h - 2, c);
+      if (h === 5 && w >= 7) rect(g, x + 2, y + 2, w - 4, 1, 'k');
+    });
+
+    // reflexos do vidro
+    rect(g, 31, 13, 2, 26, 'G');
+    rect(g, 4, 14, 2, 17, 'H');
+    rect(g, 4, 33, 2, 2, 'H');
+
+    // fita no pescoço
+    rect(g, 9, 8, 19, 1, 'b');
+    rect(g, 9, 9, 19, 1, 'B');
+
+    // etiqueta
+    rect(g, 7, 16, 23, 1, 'o');
+    rect(g, 7, 33, 23, 1, 'o');
+    rect(g, 6, 17, 1, 16, 'o');
+    rect(g, 30, 17, 1, 16, 'o');
+    rect(g, 7, 17, 23, 16, 'P');
+    rect(g, 8, 34, 23, 1, 'S');
+
+    // símbolo ∞ em pixels
+    const INF = [".XXX...XXX.", "X...X.X...X", "X....X....X", "X...X.X...X", ".XXX...XXX."];
+    INF.forEach((row, j) => [...row].forEach((ch, i) => { if (ch === 'X') g[19 + j][13 + i] = 'r'; }));
+
+    // tampa
+    const tampa = blank(W, H);
+    rect(tampa, 8, 1, 21, 1, 'l');
+    rect(tampa, 7, 2, 23, 5, 'l');
+    rect(tampa, 9, 2, 8, 1, 's');
+    rect(tampa, 7, 6, 23, 1, 'L');
+    for (let x = 9; x <= 27; x += 3) rect(tampa, x, 3, 1, 3, 'L');
+    sobre(g, contorno(tampa));
+
+    const fonte = `font-family="'Press Start 2P', 'Courier New', monospace" text-anchor="middle" fill="#7a1f4b" text-rendering="geometricPrecision"`;
+    const texto =
+      `<text x="18.5" y="27.6" font-size="2.2" ${fonte}>motivos</text>` +
+      `<text x="18.5" y="31.2" font-size="1.9" ${fonte}>pra te amar</text>`;
+
+    return toSVG(g, texto);
+  };
+
+  /* ---------- Monta a página ---------- */
+  const pote = document.getElementById('pote');
+  pote.innerHTML = montaPote();
+  document.querySelectorAll('[data-sprite]').forEach(el => { el.innerHTML = SPR[el.dataset.sprite]; });
+
+  /* Fotos: procura fotos/foto1.jpg, foto2.jpg ... e coloca nas polaroides */
+  const EXTS = ['jpg', 'jpeg', 'png', 'webp'];
+  const tenta = (foto, img, n, exts) => {
+    if (!exts.length) return;
+    const t = new Image();
+    t.onload = () => { img.src = t.src; img.hidden = false; foto.classList.add('tem'); };
+    t.onerror = () => tenta(foto, img, n, exts.slice(1));
+    t.src = `fotos/foto${n}.${exts[0]}`;
+  };
+  document.querySelectorAll('.foto').forEach((foto, i) => tenta(foto, foto.querySelector('img'), i + 1, EXTS));
+
+  /* ---------- Fila infinita de motivos ---------- */
+  const embaralha = a => {
+    const b = a.slice();
+    for (let i = b.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [b[i], b[j]] = [b[j], b[i]];
+    }
+    return b;
+  };
+
+  const GERADOS = [];
+  SUBST_M.forEach(n => CLAUSULAS.forEach(c => GERADOS.push(`seu ${n} ${c}`)));
+  SUBST_F.forEach(n => CLAUSULAS.forEach(c => GERADOS.push(`sua ${n} ${c}`)));
+  ACOES.forEach(a => FECHOS.forEach(f => GERADOS.push(`o jeito como você ${a}, ${f}`)));
+
+  // primeiro os seus motivos, depois os extras, depois os combinados (e recomeça sem fim)
+  let fila = [...embaralha(MOTIVOS), ...embaralha(EXTRAS)];
+  let sorteados = 0;
+  const proximo = () => {
+    if (!fila.length) fila = embaralha(GERADOS);
+    sorteados++;
+    return fila.shift();
+  };
+
+  /* ---------- Papelzinho ---------- */
+  const overlay = document.getElementById('overlay');
+  const papel = document.getElementById('papel');
+  const motivo = document.getElementById('motivo');
+  const btnOutro = document.getElementById('outro');
+  const btnFechar = document.getElementById('fechar');
+  const reduz = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const numero = document.getElementById('numero');
+  const mostra = () => {
+    motivo.textContent = proximo();
+    numero.textContent = `motivo nº ${sorteados}`;
+    papel.classList.remove('anima');
+    void papel.offsetWidth;
+    papel.classList.add('anima');
+  };
+
+  const abrir = () => {
+    mostra();
+    overlay.hidden = false;
+    document.body.style.overflow = 'hidden';
+    btnOutro.focus({ preventScroll: true });
+  };
+
+  const fechar = () => {
+    overlay.hidden = true;
+    document.body.style.overflow = '';
+    pote.focus({ preventScroll: true });
+  };
+
+  const explode = () => {
+    if (reduz) return;
+    const r = pote.getBoundingClientRect();
+    const cx = r.left + r.width / 2, cy = r.top + r.height * 0.3;
+    for (let i = 0; i < 9; i++) {
+      const s = document.createElement('span');
+      const w = 22 + Math.floor(Math.random() * 3) * 6;
+      s.className = 'voa';
+      s.innerHTML = SPR.heart;
+      s.style.cssText =
+        `left:${Math.round(cx - w / 2 + (Math.random() * 80 - 40))}px; top:${Math.round(cy)}px; width:${w}px;` +
+        `--dx:${Math.round(Math.random() * 240 - 120)}px; --dy:${-Math.round(180 + Math.random() * 160)}px;` +
+        `animation-delay:${Math.round(Math.random() * 180)}ms`;
+      document.body.appendChild(s);
+      setTimeout(() => s.remove(), 1500);
+    }
+  };
+
+  let ocupado = false;
+  pote.addEventListener('click', () => {
+    if (ocupado) return;
+    ocupado = true;
+    pote.classList.remove('chacoalha');
+    void pote.offsetWidth;
+    pote.classList.add('chacoalha');
+    explode();
+    setTimeout(() => { abrir(); ocupado = false; }, reduz ? 0 : 380);
+  });
+
+  btnOutro.addEventListener('click', mostra);
+  btnFechar.addEventListener('click', fechar);
+  overlay.addEventListener('click', e => { if (e.target === overlay) fechar(); });
+
+  document.addEventListener('keydown', e => {
+    if (overlay.hidden) return;
+    if (e.key === 'Escape') { fechar(); return; }
+    if (e.key === 'Tab') {
+      e.preventDefault();
+      const f = [btnOutro, btnFechar];
+      const i = f.indexOf(document.activeElement);
+      const n = e.shiftKey ? (i <= 0 ? f.length - 1 : i - 1) : (i === f.length - 1 ? 0 : i + 1);
+      f[n].focus();
+    }
+  });
+})();
+</script>
+</body>
+</html>
